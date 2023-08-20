@@ -9,3 +9,4 @@
 5. create declarative_base
 6. create schema (python class/ models)
 7. populate the database with seed.py 
+8. test the relationships (one to many in project)
