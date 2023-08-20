@@ -25,6 +25,8 @@ class Flight(Base):
 class Caster_deck(Base):
     __tablename__ = "caster_deck"
 
+    id = Column("caster_deck_id", Integer, primary_key=True)
+    caster_deck = Column("caster_deck", String)
 
     pass
 
