@@ -6,4 +6,5 @@ Base = declarative_base()
 
 class Uld(Base):
     __tablename__ = "uld"
+    id = Column("uld_id", Integer, primary_key=True)
 
