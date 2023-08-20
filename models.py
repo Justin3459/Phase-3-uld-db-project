@@ -17,6 +17,9 @@ class Flight(Base):
     id = Column("flight_id", Integer, primary_key=True)
     flight_name = Column("flight_name", String)
 
+    def __repr__(self):
+        return f"ID: {self.id} \n" + f"ULD Name: {self.flight_name} \n" \
+
 class Caster_deck(Base):
     pass
 
