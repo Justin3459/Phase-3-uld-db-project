@@ -14,6 +14,8 @@ class Uld(Base):
     
 
 class Flight(Base):
+    
+
     id = Column("flight_id", Integer, primary_key=True)
     flight_name = Column("flight_name", String)
 
@@ -21,6 +23,9 @@ class Flight(Base):
         return f"ID: {self.id} \n" + f"ULD Name: {self.flight_name} \n" \
 
 class Caster_deck(Base):
+    __tablename__ = "caster_deck"
+
+
     pass
 
 if __name__ == "__main__":
