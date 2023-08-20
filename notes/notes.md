@@ -8,3 +8,4 @@
 4. to configure the migration environment (alembic.ini and env.py)
 5. create declarative_base
 6. create schema (python class/ models)
+7. populate the database with seed.py 
