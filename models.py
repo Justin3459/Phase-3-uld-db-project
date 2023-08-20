@@ -9,6 +9,10 @@ class Uld(Base):
     id = Column("uld_id", Integer, primary_key=True)
     uld_name = Column("uld_name", String)
 
+    def __repr__(self):
+        return f"ID: {self.id} \n" + f"ULD Name: {self.uld_name} \n" \
+    
+
 class Flight(Base):
     id = Column("flight_id", Integer, primary_key=True)
     flight_name = Column("flight_name", String)
