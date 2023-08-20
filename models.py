@@ -8,9 +8,10 @@ class Uld(Base):
     __tablename__ = "uld"
     id = Column("uld_id", Integer, primary_key=True)
     uld_name = Column("uld_name", String)
+    location = Column(String, ForeignKey("caster_deck.id"))
 
     def __repr__(self):
-        return f"ID: {self.id} \n" + f"ULD Name: {self.uld_name} \n" \
+        return f"ID: {self.id} \n" + f"ULD Name: {self.uld_name} \n"
     
 
 class Flight(Base):
@@ -20,7 +21,7 @@ class Flight(Base):
     flight_name = Column("flight_name", String)
 
     def __repr__(self):
-        return f"ID: {self.id} \n" + f"ULD Name: {self.flight_name} \n" \
+        return f"ID: {self.id} \n" + f"ULD Name: {self.flight_name} \n"
 
 class Caster_deck(Base):
     __tablename__ = "caster_deck"
@@ -28,7 +29,8 @@ class Caster_deck(Base):
     id = Column("caster_deck_id", Integer, primary_key=True)
     caster_deck = Column("caster_deck", String)
 
-    pass
+    def __repr__(self):
+        return f"ID: {self.id} \n" + f"ULD Name: {self.caster_deck} \n"
 
 if __name__ == "__main__":
     engine = create_engine("sqlite:///uld_tracker.db")
