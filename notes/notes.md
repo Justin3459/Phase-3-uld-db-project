@@ -4,3 +4,4 @@
     b. Alembic (migration manager)
     c. ipdb
     d. faker (generate fake uld numbers)
+3. create the migration environment
