@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String 
-from sqlalchemy.orm import declarative_base
+from sqlalchemy import Column, Integer, String, create_engine, ForeignKey
+from sqlalchemy.orm import declarative_base, relationships
 import faker 
 
 Base = declarative_base()
@@ -15,4 +15,8 @@ class Flight(Base):
 
 class Caster_deck(Base):
     pass
+
+if __name__ == "__main__":
+    engine = create_engine("sqlite:///uld_tracker.db")
+    Base.metadata.create_all(engine)
 
