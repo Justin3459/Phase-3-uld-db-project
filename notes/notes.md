@@ -7,6 +7,6 @@
 3. [x]create the migration environment
 4. [x]to configure the migration environment (alembic.ini and env.py)
 5. [x]create declarative_base
-6. []create schema (python class/ models)
+6. []create schema (python class/ models)(run chmod -x model.py => python model.py to generate table)
 7. []populate the database with seed.py 
 8. []test the relationships (one to many in project)

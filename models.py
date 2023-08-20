@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, create_engine, ForeignKey
-from sqlalchemy.orm import declarative_base, relationships
+from sqlalchemy.orm import declarative_base, relationship
 import faker 
 
 Base = declarative_base()
@@ -28,6 +28,7 @@ class Caster_deck(Base):
 
     id = Column("caster_deck_id", Integer, primary_key=True)
     caster_deck = Column("caster_deck", String)
+    uld = relationship("Uld", backref="caster_deck")
 
     def __repr__(self):
         return f"ID: {self.id} \n" + f"ULD Name: {self.caster_deck} \n"
