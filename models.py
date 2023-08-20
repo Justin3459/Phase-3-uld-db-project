@@ -5,4 +5,5 @@ import faker
 Base = declarative_base()
 
 class Uld(Base):
+    __tablename__ = "uld"
 
