@@ -5,3 +5,4 @@
     c. ipdb
     d. faker (generate fake uld numbers)
 3. create the migration environment
+4. to configure the migration environment (alembic.ini and env.py)
