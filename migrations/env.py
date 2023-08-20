@@ -63,7 +63,7 @@ def run_migrations_online() -> None:
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )
-
+#to alter table db added render_as-bach=true
     with connectable.connect() as connection:
         context.configure(
             connection=connection, target_metadata=target_metadata, render_as_batch=True
