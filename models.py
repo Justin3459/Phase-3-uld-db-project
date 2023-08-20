@@ -13,4 +13,6 @@ class Flight(Base):
     id = Column("flight_id", Integer, primary_key=True)
     flight_name = Column("flight_name", String)
 
+class Caster_deck(Base):
+    pass
 
