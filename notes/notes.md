@@ -4,7 +4,7 @@
     b. [x]Alembic (migration manager)
     c. [x]ipdb
     d. [x]faker (generate fake uld numbers)
-3. []create the migration environment
+3. [x]create the migration environment
 4. []to configure the migration environment (alembic.ini and env.py)
 5. []create declarative_base
 6. []create schema (python class/ models)
