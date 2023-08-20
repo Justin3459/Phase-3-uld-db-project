@@ -10,4 +10,5 @@ class Uld(Base):
     uld_name = Column("uld_name", String)
 
 class Flight(Base):
+    id = Column("flight_id", Integer, primary_key=True)
 
