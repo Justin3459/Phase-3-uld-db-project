@@ -14,7 +14,7 @@ class Uld(Base):
     
 
 class Flight(Base):
-    
+    __tablename__ = "flight"
 
     id = Column("flight_id", Integer, primary_key=True)
     flight_name = Column("flight_name", String)
