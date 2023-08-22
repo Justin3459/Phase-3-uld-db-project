@@ -8,13 +8,12 @@ Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
 
-uld_caster = Table(
-    "uld_caster",
-    Base.metadata,
-    Column("id", Integer, primary_key=True),
-    Column("uld_id", ForeignKey("uld.id")),
-    Column("caster_id", ForeignKey("caster_deck.id")),
-)
+#uld_caster = Table(
+    #"uld_caster",
+    #Base.metadata,
+    #Column("id", Integer, primary_key=True),
+    #Column("uld_id", ForeignKey("uld.id")),
+    #Column("caster_id", ForeignKey("caster_deck.id")),)
 
 class Uld(Base):
     __tablename__ = "uld"
@@ -22,8 +21,8 @@ class Uld(Base):
     uld_name = Column(String)
     status = Column(String)
 
-    #caster_id = Column(Integer, ForeignKey("caster_deck.id"))
-    #caster_deck = Column(Integer, backref="uld")
+    caster_deck_id = Column(Integer, ForeignKey("caster_deck.id"))
+    caster_deck = relationship("Caster_deck", back_populates="uld_list", foreign_keys=[caster_deck_id])
 
     #caster_decks = relationship("Caster_deck", secondary=uld_caster)
     #caster_decks = relationship("Caster_deck", secondary=uld_caster, back_populates="ulds")
@@ -60,7 +59,7 @@ class Caster_deck(Base):
     #uld_id = Column(Integer, ForeignKey("uld.id"))
     #uld = relationship("Uld", secondary=uld_caster)
 
-    #ulds = relationship("Uld", secondary=uld_caster, back_populates="caster_decks")
+    uld_list = relationship("Uld", back_populates="caster_deck", foreign_keys=[Uld.caster_deck_id])
 
     def __repr__(self):
         return f"ID: {self.id} \n" + f"ULD Name: {self.caster_deck} \n"

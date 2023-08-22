@@ -1,4 +1,4 @@
-from models import Uld, Flight, Caster_deck, uld_caster
+from models import Uld, Flight, Caster_deck
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
@@ -47,19 +47,20 @@ abe_data =  [
 
 caster_deck = Caster_deck(caster_deck = "1")
 uld = [ 
-    Uld(uld_name="amz1234dqf", status="incomplete"),
-    Uld(uld_name="amz1234lay", status="incomplete"),
-    Uld(uld_name="amz1234aax", status="incomplete"),
-    Uld(uld_name="amz2222dqf", status="incomplete"),
-    Uld(uld_name="amz2222aax", status="incomplete"),
-    Uld(uld_name="amz2222lay", status="incomplete"),
-    Uld(uld_name="amz1111dqf", status="incomplete"),
-    Uld(uld_name="amz1111aax", status="incomplete"),
-    Uld(uld_name="amz1111lay", status="incomplete"),]
+    Uld(uld_name="amz1234dqf", status="incomplete", caster_deck = caster_deck),
+    Uld(uld_name="amz1234lay", status="incomplete", caster_deck = caster_deck),
+    Uld(uld_name="amz1234aax", status="incomplete", caster_deck = caster_deck),
+    Uld(uld_name="amz2222dqf", status="incomplete", caster_deck = caster_deck),
+    Uld(uld_name="amz2222aax", status="incomplete", caster_deck = caster_deck),
+    Uld(uld_name="amz2222lay", status="incomplete", caster_deck = caster_deck),
+    Uld(uld_name="amz1111dqf", status="incomplete", caster_deck = caster_deck),
+    Uld(uld_name="amz1111aax", status="incomplete", caster_deck = caster_deck),
+    Uld(uld_name="amz1111lay", status="incomplete", caster_deck = caster_deck),]
 
 all_data = [caster_deck,uld]
+session.add_all([caster_deck])
 session.add_all(uld)
-session.add_all([Caster_deck(caster_deck="3")])
+#session.add_all()
 #for data in all_data:
     #session.add_all(data)
     #session.commit()
