@@ -38,7 +38,7 @@ class Cli():
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         print(green(f"You have selected {options[menu_entry_index]}"))
-        
+
         self.clear_screen(44)
         #handle is this selection correct. displays selected uld, back, exit
         #print("Type ULD ID:\n\n")

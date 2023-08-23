@@ -41,7 +41,7 @@ class Uld(Base):
         
     def delete_uld(input):
         #this gets a specific uld. needs to be changed to input
-        session.query(Uld).filter_by(uld_name=f"amz+{input}lay").first()
+        session.query(Uld).filter_by(uld_name=f"amz1234lay").first()
         session.commit()
         pass      
 
