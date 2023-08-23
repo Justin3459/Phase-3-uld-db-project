@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, create_engine, ForeignKey, Table
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
-import faker 
+import faker
+import ipdb 
 
 import argparse
 engine = create_engine("sqlite:///uld_tracker.db")
@@ -27,7 +28,6 @@ class Uld(Base):
     #caster_decks = relationship("Caster_deck", secondary=uld_caster)
     #caster_decks = relationship("Caster_deck", secondary=uld_caster, back_populates="ulds")
     
-    @classmethod
     def handle_uld_status():
         #this just gets a specific uld. needs to change uld_name = input
         uld_status = session.query(Uld).filter_by(uld_name = "amz1234aax").first()
@@ -35,8 +35,20 @@ class Uld(Base):
             uld_status.status = "complete"
             session.commit()
         pass
-    def delete_uld():
+
+    def list_uld():
+        return session.query(Uld.uld_name).all()
+        
+    def delete_uld(input):
+        #this gets a specific uld. needs to be changed to input
+        session.query(Uld).filter_by(uld_name=f"amz+{input}lay").first()
+        session.commit()
         pass      
+
+    def add_uld():
+        #this just adds deleted uld. needs changed to take input
+        session.add(Uld(uld_name="amz1234lay", status = "incomplete", caster_deck = "1"))
+        pass
     def __repr__(self):
         return f"ID: {self.id} \n" + f"ULD Name: {self.uld_name} \n"
     

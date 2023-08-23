@@ -8,6 +8,8 @@ sqlalchemy = "==1.4.41"
 alembic = "*"
 faker = "*"
 ipdb = "*"
+prettycli = "*"
+simple-term-menu = "*"
 
 [dev-packages]
 

@@ -70,6 +70,6 @@ session.add_all(uld)
 session.commit()
 
 print("Seeding Done")
-import ipdb; ipdb.set_trace()
+#import ipdb; ipdb.set_trace()
 #for _ in range():
     #create 3 ulds in format of amz(4num)(uld type)
