@@ -39,17 +39,29 @@ class Uld(Base):
             #uld_select.selection =
         pass
     
-    def handle_name_change():
+    def handle_name_change(uld_numb, uld_type):
+        uld_name = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
+        if uld_name:
+            #needs validator for input
+            user_input = input("Enter new ULD number and Type:\n")
+            uld_name.uld_name = f"amz{user_input}"
+            print(f"Uld status set to {user_input}")
+            session.commit()
+        else:
+            print("Type valid ULD")
         pass
-    def handle_caster_change():
+    def handle_caster_change(uld_numb, uld_type):
         pass 
     def handle_uld_status(uld_numb, uld_type):
         #this just gets a specific uld. needs to change uld_name = input
         uld_status = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         if uld_status:
-            uld_status.status = "complete"
-            print("Uld status set to complete")
+            #needs validator for input
+            user_input = input("Enter Complete or Incomplete:\n")
+            uld_status.status = user_input
+            print(f"Uld status set to {user_input}")
             session.commit()
+            ipdb.set_trace()
         else:
             print("Type valid ULD")
         pass

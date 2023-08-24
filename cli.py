@@ -63,7 +63,7 @@ class Cli():
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         uld_type = options[menu_entry_index]
-        uld_numb = input("Type ULD Number:")
+        uld_numb = input("Type ULD Number:\n")
         self.handle_update_selection(uld_numb, uld_type )
         pass
 
@@ -84,9 +84,10 @@ class Cli():
             pass
         elif uld_selection == "Status":
             Uld.handle_uld_status(uld_numb,uld_type)
-        else:
+        else: 
             self.start()            
         pass
+        self.start()
 
     def delete(self):
         print("Select ULD type:\n")
