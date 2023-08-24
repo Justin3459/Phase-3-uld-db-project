@@ -12,7 +12,7 @@ class Cli():
         #self.clear_screen(44)
 
         print(blue("Welcome to ULD Manager"))
-        options = ["List All ULD", "Find ULD", "Add ULD", "Delete ULD", "Exit"]
+        options = ["List All ULD", "Find ULD", "Change ULD Status", "Add ULD", "Delete ULD", "Exit"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
 
@@ -28,6 +28,9 @@ class Cli():
 
         elif options[menu_entry_index] == "Delete ULD":
             self.delete()
+
+        elif options[menu_entry_index == "Change ULD Status"]:
+            self.change_status()
         else:
             #exit app
             pass
@@ -102,8 +105,16 @@ class Cli():
         print(Uld.list_uld())
         self.start()
 
-
     def change_status(self):
+        print("Select ULD type:\n")
+        options = ["AAX", "LAY", "DQF", "AKE"]
+        terminal_menu = TerminalMenu(options)
+        menu_entry_index = terminal_menu.show()
+
+        uld_type = options[menu_entry_index]
+        uld_numb = input("Type ULD Number:")
+        Uld.handle_uld_status(uld_numb, uld_type)
+        self.start()
         pass
 
     def clear_screen(self,lines):

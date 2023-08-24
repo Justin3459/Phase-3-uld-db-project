@@ -26,16 +26,19 @@ class Uld(Base):
     caster_deck = relationship("Caster_deck", back_populates="uld_list", foreign_keys=[caster_deck_id])
 
     def __repr__(self):
-        return f"ID: {self.id} \n" + f"ULD Name: {self.uld_name} \n" + f"Caster Deck: {self.caster_deck_id}"
+        return f"\nID: {self.id} \n" + f"ULD Name: {self.uld_name} \n" + f"Caster Deck: {self.caster_deck_id}\n" + f"Status: {self.status}"
     #caster_decks = relationship("Caster_deck", secondary=uld_caster)
     #caster_decks = relationship("Caster_deck", secondary=uld_caster, back_populates="ulds")
     
-    def handle_uld_status():
+    def handle_uld_status(uld_numb, uld_type):
         #this just gets a specific uld. needs to change uld_name = input
-        uld_status = session.query(Uld).filter_by(uld_name = "amz1234aax").first()
+        uld_status = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         if uld_status:
             uld_status.status = "complete"
+            print("Uld status set to complete")
             session.commit()
+        else:
+            print("Select valid ULD")
         pass
     
     def find(uld_numb, uld_type):
