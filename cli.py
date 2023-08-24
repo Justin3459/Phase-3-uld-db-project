@@ -12,21 +12,24 @@ class Cli():
         #self.clear_screen(44)
 
         print(blue("Welcome to ULD Manager"))
-        options = ["List All ULD", "Find ULD", "Add ULD", "Delete Uld"]
+        options = ["List All ULD", "Find ULD", "Add ULD", "Delete ULD", "Exit"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
 
         if options[menu_entry_index] == "Add ULD":
             self.add()
+
         elif options[menu_entry_index] == "List All ULD":
             self.list()
-            pass
+
         elif options[menu_entry_index] == "Find ULD":
+            self.find()
             pass
+
         elif options[menu_entry_index] == "Delete ULD":
             self.delete()
-            pass
         else:
+            #exit app
             pass
 
 
@@ -48,7 +51,15 @@ class Cli():
                 self.add()
 
     def delete(self):
-        print("in delete")
+        print("Select ULD type:\n")
+        options = ["AAX", "LAY", "DQF", "AKE"]
+        terminal_menu = TerminalMenu(options)
+        menu_entry_index = terminal_menu.show()
+        uld_type = options[menu_entry_index]
+        uld_numb = input("Type ULD Number:")
+
+        Uld.delete_uld(uld_numb, uld_type)
+        self.start()
         pass
         
     def add(self):
@@ -73,9 +84,16 @@ class Cli():
         #handle uld and persist into db
         pass
 
-
     def find(self):
+        print("Select ULD type:\n")
+        options = ["AAX", "LAY", "DQF", "AKE"]
+        terminal_menu = TerminalMenu(options)
+        menu_entry_index = terminal_menu.show()
 
+        uld_type = options[menu_entry_index]
+        uld_numb = input("Type ULD Number:")
+        Uld.find(uld_numb,uld_type)
+        self.start()
         pass 
     
     def list(self):

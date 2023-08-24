@@ -35,20 +35,24 @@ class Uld(Base):
             uld_status.status = "complete"
             session.commit()
         pass
+    
+    def find(uld_numb, uld_type):
+        uld_find = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
+        print(uld_find)
 
     def list_uld():
         return session.query(Uld.uld_name).all()
         
     def delete_uld(numb, type):
         #this gets a specific uld. needs to be changed to input
-        session.query(Uld).filter_by(uld_name=f"amz{numb}{type}").first()
+        session.query(Uld).filter_by(uld_name=f"amz{numb}{type.lower()}").delete()
         session.commit()
-        pass      
+        
 
     def add_uld(numb, type):
         #this just adds deleted uld. needs changed to take input
-        session.add(Uld(uld_name=f"amz{numb}{type}", status = "incomplete", caster_deck = None))
-
+        session.add(Uld(uld_name=f"amz{numb}{type.lower()}", status = "incomplete", caster_deck = None))
+        session.commit()
     def __repr__(self):
         return f"ID: {self.id} \n" + f"ULD Name: {self.uld_name} \n"
     
