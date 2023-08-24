@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, create_engine, ForeignKey, Table
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
+from prettycli import red, blue, green
 import faker
 import ipdb 
 
