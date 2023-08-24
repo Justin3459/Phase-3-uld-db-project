@@ -1,8 +1,7 @@
 
 from prettycli import red, blue, green
 from simple_term_menu import TerminalMenu
-from models import Uld, Caster_deck
-import ipdb
+from models import Uld
 
 class Cli():
 

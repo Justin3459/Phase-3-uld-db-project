@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String, create_engine, ForeignKey, Table
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 from prettycli import red, blue, green
 import faker
-import ipdb 
 
 import argparse
 engine = create_engine("sqlite:///uld_tracker.db")
@@ -37,9 +36,9 @@ class Uld(Base):
         uld_name = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         if uld_name:
             #needs validator for input
-            user_input = input("Enter new ULD number and Type:\n")
+            user_input = input(blue("Enter new ULD number and Type:\n"))
             uld_name.uld_name = f"amz{user_input}"
-            print(f"Uld status set to {user_input}")
+            print(green(f"Uld status set to {user_input}"))
             session.commit()
         else:
             print(red("Type valid ULD"))
@@ -48,9 +47,9 @@ class Uld(Base):
         uld_caster = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         if uld_caster:
             #needs validator for input
-            user_input = input("Enter caster deck number:\n")
+            user_input = input(blue("Enter caster deck number:\n"))
             uld_caster.caster_deck_id = int(user_input)
-            print(f"Caster deck set to {user_input}")
+            print(green(f"Caster deck set to {user_input}"))
             session.commit()
         else:
             print(red("Type valid ULD"))
@@ -59,9 +58,9 @@ class Uld(Base):
         uld_status = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         if uld_status:
             #needs validator for input
-            user_input = input("Enter Complete or Incomplete:\n")
+            user_input = input(blue("Enter Complete or Incomplete:\n"))
             uld_status.status = user_input
-            print(f"Uld status set to {user_input}")
+            print(green(f"Uld status set to {user_input}"))
             session.commit()
         else:
             print(red("Type valid ULD"))
@@ -70,7 +69,7 @@ class Uld(Base):
     def find(uld_numb, uld_type):
         uld_find = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         if uld_find:
-            print(uld_find)
+            print(green(uld_find))
         else:
             print(red("Type valid ULD"))
 
