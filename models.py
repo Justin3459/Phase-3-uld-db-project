@@ -30,8 +30,8 @@ class Uld(Base):
         return f"\nID: {self.id} \n" + f"ULD Name: {self.uld_name} \n" + f"Caster Deck: {self.caster_deck_id}\n" + f"Status: {self.status}"
     #caster_decks = relationship("Caster_deck", secondary=uld_caster)
     #caster_decks = relationship("Caster_deck", secondary=uld_caster, back_populates="ulds")
+    
     def handle_uld_update(uld_numb, uld_type, status_selection):
-        print("in handle uld update")
         selection = status_selection 
         uld_select = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         ipdb.set_trace()
