@@ -29,7 +29,7 @@ class Cli():
         elif options[menu_entry_index] == "Delete ULD":
             self.delete()
 
-        elif options[menu_entry_index == "Change ULD Status"]:
+        elif options[menu_entry_index] == "Change ULD Status":
             self.change_status()
         elif options[menu_entry_index] == "Update ULD":
             self.handle_update()
@@ -57,24 +57,35 @@ class Cli():
                 self.add()
     
     def handle_update(self):
+        print("in handle update")
         print("Select ULD type:\n")
         options = ["AAX", "LAY", "DQF", "AKE"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         uld_type = options[menu_entry_index]
         uld_numb = input("Type ULD Number:")
-        self.handle_update_selection()
+        self.handle_update_selection(uld_numb, uld_type )
         pass
 
-    def handle_update_selection(self):
+    def handle_update_selection(self,uld_numb,uld_type):
         #selection to update uld_name, caster_deck, status
+        print("in update selection")
         print("What would you like to update:\n")
         options = ["Uld Name", "Caster Deck", "Status"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         uld_selection = options[menu_entry_index]
-        uld_numb = input("Type ULD Number:")
         
+        if uld_selection == "Uld Name":
+            pass
+            Uld.handle_name_change(uld_numb,uld_type)
+        elif uld_selection == "Caster Deck":
+            Uld.handle_caster_change(uld_numb,uld_type)
+            pass
+        elif uld_selection == "Status":
+            Uld.handle_uld_status(uld_numb,uld_type)
+        else:
+            self.start()            
         pass
 
     def delete(self):
@@ -130,6 +141,7 @@ class Cli():
         self.start()
 
     def change_status(self):
+        print("in change status")
         print("Select ULD type:\n")
         options = ["AAX", "LAY", "DQF", "AKE"]
         terminal_menu = TerminalMenu(options)
