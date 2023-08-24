@@ -12,7 +12,7 @@ class Cli():
         #self.clear_screen(44)
 
         print(blue("Welcome to ULD Manager"))
-        options = ["List All ULD", "Find ULD", "Change ULD Status", "Update ULD", "Add ULD", "Delete ULD", "Exit"]
+        options = ["List All ULD", "Find ULD", "Update ULD", "Add ULD", "Delete ULD", "Exit"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
 
@@ -29,8 +29,6 @@ class Cli():
         elif options[menu_entry_index] == "Delete ULD":
             self.delete()
 
-        elif options[menu_entry_index] == "Change ULD Status":
-            self.change_status()
         elif options[menu_entry_index] == "Update ULD":
             self.handle_update()
             pass

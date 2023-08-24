@@ -51,9 +51,17 @@ class Uld(Base):
             print("Type valid ULD")
         pass
     def handle_caster_change(uld_numb, uld_type):
+        uld_caster = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
+        if uld_caster:
+            #needs validator for input
+            user_input = input("Enter caster deck number:\n")
+            uld_caster.caster_deck_id = int(user_input)
+            print(f"Caster deck set to {user_input}")
+            session.commit()
+        else:
+            print("Type valid ULD:")
         pass 
     def handle_uld_status(uld_numb, uld_type):
-        #this just gets a specific uld. needs to change uld_name = input
         uld_status = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         if uld_status:
             #needs validator for input
@@ -61,7 +69,6 @@ class Uld(Base):
             uld_status.status = user_input
             print(f"Uld status set to {user_input}")
             session.commit()
-            ipdb.set_trace()
         else:
             print("Type valid ULD")
         pass
