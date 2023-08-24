@@ -45,7 +45,6 @@ class Cli():
             selection = len(numb)
             if selection == 4:
                 Uld.add_uld(numb, uld_type)
-                self.clear_screen(44)
                 self.start()
                 print("acceptable")
                 pass
@@ -56,23 +55,27 @@ class Cli():
     def handle_update(self):
         print("in handle update")
         print("Select ULD type:\n")
-        options = ["AAX", "LAY", "DQF", "AKE"]
+        options = ["AAX", "LAY", "DQF", "AKE", "Main Menu"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         uld_type = options[menu_entry_index]
-        uld_numb = input("Type ULD Number:\n")
-        self.handle_update_selection(uld_numb, uld_type )
+        if options[menu_entry_index] == "Main Menu":
+            self.start()
+        else:
+            uld_numb = input("Type ULD Number:\n")
+            self.handle_update_selection(uld_numb, uld_type )
         pass
 
     def handle_update_selection(self,uld_numb,uld_type):
         #selection to update uld_name, caster_deck, status
-        print("in update selection")
+        self.clear_screen(44)
         print("What would you like to update:\n")
-        options = ["Uld Name", "Caster Deck", "Status"]
+        options = ["Uld Name", "Caster Deck", "Status", "Main Menu"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         uld_selection = options[menu_entry_index]
         
+        self.clear_screen(44)
         if uld_selection == "Uld Name":
             pass
             Uld.handle_name_change(uld_numb,uld_type)
@@ -81,56 +84,58 @@ class Cli():
             pass
         elif uld_selection == "Status":
             Uld.handle_uld_status(uld_numb,uld_type)
+        elif uld_selection == "Main Menu":
+            self.start()
         else: 
+            self.clear_screen(44)
             self.start()            
         pass
         self.start()
 
     def delete(self):
         print("Select ULD type:\n")
-        options = ["AAX", "LAY", "DQF", "AKE"]
+        options = ["AAX", "LAY", "DQF", "AKE", "Main Menu"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         uld_type = options[menu_entry_index]
-        uld_numb = input("Type ULD Number:")
+        
 
-        Uld.delete_uld(uld_numb, uld_type)
+        if options[menu_entry_index] == "Main Menu":
+            self.start()
+        else:
+            uld_numb = input("Type ULD Number:")
+            Uld.delete_uld(uld_numb, uld_type)
         self.start()
         pass
         
     def add(self):
         print("Select ULD type:\n")
-        options = ["AAX", "LAY", "DQF", "AKE"]
+        options = ["AAX", "LAY", "DQF", "AKE", "Main Menu"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         uld_type = options[menu_entry_index]
-        uld_numb = input("Type ULD Number:")
-
-        self.handle_add(uld_numb,uld_type)
+        if options[menu_entry_index] == "Main Menu":
+            self.start()
+        else:
+            uld_numb = input("Type ULD Number:")
+            self.handle_add(uld_numb,uld_type)
 
         print(green(f"You have selected {options[menu_entry_index]}"))
-        #Uld.add_uld(uld_numb, options[menu_entry_index])
-
-        #self.clear_screen(44)
-        #handle is this selection correct. displays selected uld, back, exit
-        #print("Type ULD ID:\n\n")
-        #uld = input("Type ULD ID:\n\n")
-
-        #take input of uld id 
-        #handle uld and persist into db
-        pass
 
     def find(self):
-        print("Select ULD type:\n")
-        options = ["AAX", "LAY", "DQF", "AKE"]
+        self.clear_screen(44)
+        print(blue("Select ULD type:\n"))
+        options = ["AAX", "LAY", "DQF", "AKE", "Main Menu"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
-
         uld_type = options[menu_entry_index]
-        uld_numb = input("Type ULD Number:")
-        Uld.find(uld_numb,uld_type)
-        self.start()
-        pass 
+        if options[menu_entry_index] == "Main Menu":
+            self.start()
+        else:
+            uld_numb = input("Type ULD Number:")
+            self.clear_screen(44)
+            Uld.find(uld_numb,uld_type)
+            self.start()
     
     def list(self):
         self.clear_screen(44)
@@ -139,14 +144,15 @@ class Cli():
         self.start()
 
     def change_status(self):
-        print("in change status")
-        print("Select ULD type:\n")
+        self.clear_screen(44)
+        print(blue("Select ULD type:\n"))
         options = ["AAX", "LAY", "DQF", "AKE"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
 
         uld_type = options[menu_entry_index]
         uld_numb = input("Type ULD Number:")
+        self.clear_screen(44)
         Uld.handle_uld_status(uld_numb, uld_type)
         self.start()
         pass

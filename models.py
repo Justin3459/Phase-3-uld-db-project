@@ -38,7 +38,7 @@ class Uld(Base):
             #needs validator for input
             user_input = input(blue("Enter new ULD number and Type:\n"))
             uld_name.uld_name = f"amz{user_input}"
-            print(green(f"Uld status set to {user_input}"))
+            print(green(f"Uld name set to amz{user_input}"))
             session.commit()
         else:
             print(red("Type valid ULD"))
@@ -53,7 +53,7 @@ class Uld(Base):
             session.commit()
         else:
             print(red("Type valid ULD"))
-        pass 
+        
     def handle_uld_status(uld_numb, uld_type):
         uld_status = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         if uld_status:
@@ -69,23 +69,25 @@ class Uld(Base):
     def find(uld_numb, uld_type):
         uld_find = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         if uld_find:
-            print(green(uld_find))
+            print(green(f"{uld_find}"))
         else:
-            print(red("Type valid ULD"))
-
+            print(red(f"Type valid ULD"))
+        
     def list_uld():
         return session.query(Uld.uld_name).all()
         
     def delete_uld(uld_numb, uld_type):
         session.query(Uld).filter_by(uld_name=f"amz{uld_numb}{uld_type.lower()}").delete()
         session.commit()
+        print(green(f"Deleted: amz{uld_numb}{uld_type.lower()} "))
         
 
     def add_uld(uld_numb, uld_type):
         #needs to validate that the uld doesnt exist. create a find or create method?
         session.add(Uld(uld_name=f"amz{uld_numb}{uld_type.lower()}", status = "incomplete", caster_deck = None))  
         session.commit()
-    
+        print(green(f"Added: amz{uld_numb}{uld_type.lower()} "))
+
 class Flight(Base):
     __tablename__ = "flight"
 
