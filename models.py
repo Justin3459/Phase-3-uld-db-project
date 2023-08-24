@@ -31,15 +31,7 @@ class Uld(Base):
     #caster_decks = relationship("Caster_deck", secondary=uld_caster)
     #caster_decks = relationship("Caster_deck", secondary=uld_caster, back_populates="ulds")
     
-    def handle_uld_update(uld_numb, uld_type, status_selection):
-        selection = status_selection 
-        uld_select = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
-        ipdb.set_trace()
-        if uld_select:
-            pass
-            #uld_select.selection =
-        pass
-    
+
     def handle_name_change(uld_numb, uld_type):
         uld_name = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         if uld_name:
