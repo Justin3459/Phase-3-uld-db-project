@@ -67,7 +67,16 @@ class Cli():
         pass
 
     def handle_update_selection(self):
+        #selection to update uld_name, caster_deck, status
+        print("What would you like to update:\n")
+        options = ["Uld Name", "Caster Deck", "Status"]
+        terminal_menu = TerminalMenu(options)
+        menu_entry_index = terminal_menu.show()
+        uld_selection = options[menu_entry_index]
+        uld_numb = input("Type ULD Number:")
+        
         pass
+
     def delete(self):
         print("Select ULD type:\n")
         options = ["AAX", "LAY", "DQF", "AKE"]
