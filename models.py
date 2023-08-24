@@ -25,6 +25,8 @@ class Uld(Base):
     caster_deck_id = Column(Integer, ForeignKey("caster_deck.id"))
     caster_deck = relationship("Caster_deck", back_populates="uld_list", foreign_keys=[caster_deck_id])
 
+    def __repr__(self):
+        return f"ID: {self.id} \n" + f"ULD Name: {self.uld_name} \n" + f"Caster Deck: {self.caster_deck_id}"
     #caster_decks = relationship("Caster_deck", secondary=uld_caster)
     #caster_decks = relationship("Caster_deck", secondary=uld_caster, back_populates="ulds")
     
@@ -37,6 +39,7 @@ class Uld(Base):
         pass
     
     def find(uld_numb, uld_type):
+        #ipdb.set_trace()
         uld_find = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
         print(uld_find)
 
@@ -53,8 +56,6 @@ class Uld(Base):
         #this just adds deleted uld. needs changed to take input
         session.add(Uld(uld_name=f"amz{numb}{type.lower()}", status = "incomplete", caster_deck = None))
         session.commit()
-    def __repr__(self):
-        return f"ID: {self.id} \n" + f"ULD Name: {self.uld_name} \n"
     
 class Flight(Base):
     __tablename__ = "flight"
