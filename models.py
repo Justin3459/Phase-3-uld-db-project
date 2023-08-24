@@ -27,10 +27,11 @@ class Uld(Base):
     caster_deck = relationship("Caster_deck", back_populates="uld_list", foreign_keys=[caster_deck_id])
 
     def __repr__(self):
-        return f"\nID: {self.id} \n" + f"ULD Name: {self.uld_name} \n" + f"Caster Deck: {self.caster_deck_id}\n" + f"Status: {self.status}"
-    #caster_decks = relationship("Caster_deck", secondary=uld_caster)
-    #caster_decks = relationship("Caster_deck", secondary=uld_caster, back_populates="ulds")
-    
+        return \
+            f"\nID: {self.id} \n"+ \
+            f"ULD Name: {self.uld_name} \n" + \
+            f"Caster Deck: {self.caster_deck_id}\n" + \
+            f"Status: {self.status}"
 
     def handle_name_change(uld_numb, uld_type):
         uld_name = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
@@ -41,7 +42,7 @@ class Uld(Base):
             print(f"Uld status set to {user_input}")
             session.commit()
         else:
-            print("Type valid ULD")
+            print(red("Type valid ULD"))
         pass
     def handle_caster_change(uld_numb, uld_type):
         uld_caster = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
@@ -52,7 +53,7 @@ class Uld(Base):
             print(f"Caster deck set to {user_input}")
             session.commit()
         else:
-            print("Type valid ULD:")
+            print(red("Type valid ULD"))
         pass 
     def handle_uld_status(uld_numb, uld_type):
         uld_status = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
@@ -63,26 +64,27 @@ class Uld(Base):
             print(f"Uld status set to {user_input}")
             session.commit()
         else:
-            print("Type valid ULD")
+            print(red("Type valid ULD"))
         pass
     
     def find(uld_numb, uld_type):
-        #ipdb.set_trace()
         uld_find = session.query(Uld).filter_by(uld_name = f"amz{uld_numb}{uld_type.lower()}").first()
-        print(uld_find)
+        if uld_find:
+            print(uld_find)
+        else:
+            print(red("Type valid ULD"))
 
     def list_uld():
         return session.query(Uld.uld_name).all()
         
-    def delete_uld(numb, type):
-        #this gets a specific uld. needs to be changed to input
-        session.query(Uld).filter_by(uld_name=f"amz{numb}{type.lower()}").delete()
+    def delete_uld(uld_numb, uld_type):
+        session.query(Uld).filter_by(uld_name=f"amz{uld_numb}{uld_type.lower()}").delete()
         session.commit()
         
 
-    def add_uld(numb, type):
-        #this just adds deleted uld. needs changed to take input
-        session.add(Uld(uld_name=f"amz{numb}{type.lower()}", status = "incomplete", caster_deck = None))
+    def add_uld(uld_numb, uld_type):
+        #needs to validate that the uld doesnt exist. create a find or create method?
+        session.add(Uld(uld_name=f"amz{uld_numb}{uld_type.lower()}", status = "incomplete", caster_deck = None))  
         session.commit()
     
 class Flight(Base):
