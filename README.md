@@ -33,12 +33,15 @@ run python3 cli.py to start application. If you get a ModuleNotFoundError you ca
 Provide instructions on how to install your CLI application. Include any prerequisites or dependencies that need to be installed before using your CLI. If your application is available on package managers like npm, pip, or brew, mention it here.
 
 ## Introduction
-
-Provide a brief overview of your application. What does it do? What problem does it solve? Why should someone use it?
+    This CLI application is used to track Unit Load Devices(ULD) once they are on a caster deck. All ULDs are marked as incomplete and once completed the user is able to change the status of the ULD. The features in this application are: List ULD, Update Status, Add ULD, and Delete ULD. This application allows the user to keep track of the status and modify ULD information.
 
 ## Features
+List ULD: Allows user to display ULDs that are currently in the database
+Add ULD: Allows user to add new ULDs to the database in the format amz(4 digit number)(ULD type)
+Delete ULD: Allows user to delete Ulds in the database
+Update ULD: Allows user to change the name, caster deck or status of a particular ULD
 
-List the key features and functionalities of your application.
+If a ULD is not in the current database the user will be prompted to enter a valid ULD
 
 ## Installation
 
