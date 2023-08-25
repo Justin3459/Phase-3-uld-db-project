@@ -1,5 +1,4 @@
 # Phase-3-uld-db-project
-# Your CLI Application Name
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-v1.0.0-green.svg)](https://semver.org/)
@@ -51,18 +50,15 @@ If a ULD is not in the current database the user will be prompted to enter a val
 
 ## Usage
 
-Explain how to use your application. Provide examples and command-line usage if applicable. Screenshots or GIFs can be helpful here.
-
-## Configuration
-
-If your application requires configuration, API keys, or settings, explain how users can configure it. Provide guidance on modifying configuration files or environment variables.
-
-## Contributing
-
-Encourage others to contribute to your project. Outline guidelines for how they can submit bug reports, feature requests, or pull requests. Include information about coding standards, testing, and how to set up a development environment.
+1. Once inside the repository and the virtual environment. 
+2. Type $python3 cli.py
+![Start up](image.png)
+3. Once the CLI has started use the arrow keys to make a selection
+4. If "List Uld" is selected it will display all ULD 
+5. If "Find ULD" is selected. A prompt to select a ULD type will appear. After ULD is selected the application will will prompt a ULD id. If ULD is in the database it will list: ULD ID, ULD name, caster deck, and status
+6. If "Update ULD" is selected. A prompt to select a ULD type will appear then prompt for ULD ID to be typed in. If ULD is in the database you will be able to change the ULD name, caster deck, and status
+7. If "Add ULD" or "Delete ULD" is selected the user will be able to input ULD number and type and add it to the database
 
 ## License
-
-Specify the license under which your application is distributed. For example:
 
 This project is licensed under the [MIT License](LICENSE).
